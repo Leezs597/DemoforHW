@@ -1,0 +1,31 @@
+#sys-left-menu {
+    width: 210px;
+    height: calc(100% - 60px);
+    background-color: #424a5d;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+
+#sys-left-menu #leftMenu{
+    background: transparent;
+}
+
+.w-text{
+    color: #ffffff !important;
+    border-radius: 4px;
+}
+
+.w-hover:hover{
+    background: #00f7de !important;
+}
+#sys-left-menu .layui-menu .layui-menu-item-checked, .layui-menu .layui-menu-item-checked2{
+    background-color: #00f7de!important;
+    /*color: #5fb878;*/
+}
+
+.layui-menu .layui-menu-item-checked:after {
+    border: unset !important;
+}

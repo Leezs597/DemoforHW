@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 开启注解配置   -->
+    <context:annotation-config/>
+    <!-- 开启包扫描   -->
+    <context:component-scan base-package="cn.hw.ssmtest1"/>
+    <!--  mybatis sqlsessionFactory spring配置  -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--    数据源配置    -->
+        <property name="dataSource" ref="dataSource"/>
+        <!--   mapper.xml位置配置     -->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <!--   mybatis基本配置文件位置配置     -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+    </bean>
+
+    <!-- 配置mapper接口存放位置   -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.hw.ssmtest1.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+</beans>

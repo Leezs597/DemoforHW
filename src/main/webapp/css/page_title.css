@@ -1,0 +1,17 @@
+#page-title{
+    width: 100%;
+    border-bottom: 2px solid #bfa863;
+}
+
+#page-title .page-title-value{
+    margin-top: 20px;
+    width: 160px;
+    height:40px;
+    line-height: 40px;
+    background: #bfa863;
+    margin-left: 10px;
+    color: #ffffff;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    text-align: center;
+}

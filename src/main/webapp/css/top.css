@@ -1,0 +1,23 @@
+#sys-header{
+    height: 60px;
+    background-color: #bfa863;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 18px;
+    color: #fff;
+}
+#sys-header .sys-header-right{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+#sys-header .sys-header-right .sys-header-welcome{
+    line-height: 38px;
+    font-size: 14px;
+    color: #fff;
+}

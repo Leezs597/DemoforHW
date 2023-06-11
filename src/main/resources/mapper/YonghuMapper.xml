@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hw.ssmtest1.mapper.YonghuMapper">
+
+    <resultMap id="BaseResultMap" type="cn.hw.ssmtest1.entity.Yonghu">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="yonghuming" column="yonghuming" jdbcType="VARCHAR"/>
+            <result property="mima" column="mima" jdbcType="VARCHAR"/>
+            <result property="xingming" column="xingming" jdbcType="VARCHAR"/>
+            <result property="xingbie" column="xingbie" jdbcType="VARCHAR"/>
+            <result property="shouji" column="shouji" jdbcType="VARCHAR"/>
+            <result property="youxiang" column="youxiang" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,yonghuming,mima,
+        xingming,xingbie,shouji,
+        youxiang
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from yonghu
+        where  id = #{id,jdbcType=INTEGER} 
+    </select>
+    <select id="selectByKeyword" resultType="cn.hw.ssmtest1.entity.Yonghu">
+        select * from yonghu
+        <where>
+            <if test="keyword != null and keyword != ''">
+                and yonghuming like concat('%',#{keyword},'%')
+            </if>
+        </where>
+    </select>
+    <select id="selectByUsername" parameterType="cn.hw.ssmtest1.entity.Yonghu">
+        select * from yonghu where yonghuming = #{username}
+    </select>
+    <select id="getYonghuByUsernameAndPwd" resultType="cn.hw.ssmtest1.entity.Yonghu">
+        select * from yonghu where yonghuming = #{username} and mima = #{password}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from yonghu
+        where  id = #{id,jdbcType=INTEGER} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.hw.ssmtest1.entity.Yonghu" useGeneratedKeys="true">
+        insert into yonghu
+        ( id,yonghuming,mima
+        ,xingming,xingbie,shouji
+        ,youxiang)
+        values (#{id,jdbcType=INTEGER},#{yonghuming,jdbcType=VARCHAR},#{mima,jdbcType=VARCHAR}
+        ,#{xingming,jdbcType=VARCHAR},#{xingbie,jdbcType=VARCHAR},#{shouji,jdbcType=VARCHAR}
+        ,#{youxiang,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.hw.ssmtest1.entity.Yonghu" useGeneratedKeys="true">
+        insert into yonghu
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="yonghuming != null">yonghuming,</if>
+                <if test="mima != null">mima,</if>
+                <if test="xingming != null">xingming,</if>
+                <if test="xingbie != null">xingbie,</if>
+                <if test="shouji != null">shouji,</if>
+                <if test="youxiang != null">youxiang,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=INTEGER},</if>
+                <if test="yonghuming != null">#{yonghuming,jdbcType=VARCHAR},</if>
+                <if test="mima != null">#{mima,jdbcType=VARCHAR},</if>
+                <if test="xingming != null">#{xingming,jdbcType=VARCHAR},</if>
+                <if test="xingbie != null">#{xingbie,jdbcType=VARCHAR},</if>
+                <if test="shouji != null">#{shouji,jdbcType=VARCHAR},</if>
+                <if test="youxiang != null">#{youxiang,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.hw.ssmtest1.entity.Yonghu">
+        update yonghu
+        <set>
+                <if test="yonghuming != null">
+                    yonghuming = #{yonghuming,jdbcType=VARCHAR},
+                </if>
+                <if test="mima != null">
+                    mima = #{mima,jdbcType=VARCHAR},
+                </if>
+                <if test="xingming != null">
+                    xingming = #{xingming,jdbcType=VARCHAR},
+                </if>
+                <if test="xingbie != null">
+                    xingbie = #{xingbie,jdbcType=VARCHAR},
+                </if>
+                <if test="shouji != null">
+                    shouji = #{shouji,jdbcType=VARCHAR},
+                </if>
+                <if test="youxiang != null">
+                    youxiang = #{youxiang,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.hw.ssmtest1.entity.Yonghu">
+        update yonghu
+        set 
+            yonghuming =  #{yonghuming,jdbcType=VARCHAR},
+            mima =  #{mima,jdbcType=VARCHAR},
+            xingming =  #{xingming,jdbcType=VARCHAR},
+            xingbie =  #{xingbie,jdbcType=VARCHAR},
+            shouji =  #{shouji,jdbcType=VARCHAR},
+            youxiang =  #{youxiang,jdbcType=VARCHAR}
+        where   id = #{id,jdbcType=INTEGER} 
+    </update>
+    <select id="selectByselectByUsername" resultType="cn.hw.ssmtest1.entity.Yonghu"></select>
+    <select id="selectByYhUsername" resultType="cn.hw.ssmtest1.entity.Yonghu"></select>
+</mapper>
